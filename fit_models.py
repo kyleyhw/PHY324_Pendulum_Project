@@ -34,5 +34,5 @@ class DecayingSinusoid():
         self.CorrespondingFittedFunction = fitted_models.DecayingSinusoid
         
     def __call__(self, t, base, amplitude, period, phase, decay_constant):
-        result = base + np.exp(-t / decay_constant) * amplitude * np.cos((2*np.pi / period) * t + phase)
+        result = base + np.exp(-t / decay_constant) * amplitude * np.sin((2*np.pi / period) * t + phase)
         return result

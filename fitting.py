@@ -49,7 +49,7 @@ class Fitting():
             ax_text = AnchoredText(info_on_ax, loc='lower left', frameon=False, prop=dict(fontsize=info_fontsize))
             ax.add_artist(ax_text)
 
-        ax.legend()
+        ax.legend(loc='upper right')
 
     def plot_residuals(self, ax):
 
