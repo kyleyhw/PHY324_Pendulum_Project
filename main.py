@@ -16,9 +16,12 @@ def run_main(filename, show=False, save=False):
     data = data_loader.DataLoader(filename)
     model = fit_models.DecayingSinusoid()
 
-
-    fit = fitting.Fitting(model=model, x=data.x, x_error=data.x_error, y_measured=data.y, y_error=data.y_error,
-                          units_for_parameters=('', '', '', '', ''), p0=(150, 100, 1, 1.5, 50))
+    try:
+        fit = fitting.Fitting(model=model, x=data.x, x_error=data.x_error, y_measured=data.y, y_error=data.y_error,
+                              units_for_parameters=('', '', '', '', ''), p0=(150, 100, 1, 1.5, 50))
+    except RuntimeError:
+        fit = fitting.Fitting(model=model, x=data.x, x_error=data.x_error, y_measured=data.y, y_error=data.y_error,
+                              units_for_parameters=('', '', '', '', ''), p0=(150, 100, 1, -1.5, 50))
 
     fig, ax = plt.subplots(1, 1, figsize=(16, 9))
 

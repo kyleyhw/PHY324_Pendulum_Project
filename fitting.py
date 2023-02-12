@@ -21,7 +21,7 @@ class Fitting():
         self.y_error = y_error
 
         if hasattr(model, 'parameter_bounds'):
-            self.popt, self.pcov = curve_fit(self.model, self.x, self.y_measured, sigma=y_error, absolute_sigma=True, p0=p0, bounds=model.parameter_bounds, maxfev=100000, method='trf', verbose=1)
+            self.popt, self.pcov = curve_fit(self.model, self.x, self.y_measured, sigma=y_error, absolute_sigma=True, p0=p0, bounds=model.parameter_bounds, maxfev=100000, method='trf')
         else:
             self.popt, self.pcov = curve_fit(self.model, self.x, self.y_measured, sigma=y_error, absolute_sigma=True, p0=p0, maxfev=100000)
 

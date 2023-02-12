@@ -54,7 +54,7 @@ class DecayingSinusoid():
         
         self.function = fit_models.DecayingSinusoid()
         self.number_of_parameters = self.function.number_of_parameters
-        self.parameter_names = ('B', 'A', 'T', r'$\tau$', '$\phi$')
+        self.parameter_names = ('B', 'A', 'T', r'$\phi$', r'$\tau$')
         self.units_for_parameters = units_for_parameters
         
         self.parameter_info_list = [str(self.parameter_names[i]) + ' = (' + Output.print_with_uncertainty(self.popt[i], parameter_errors[i]) + ') ' + self.units_for_parameters[i] for i in range(self.number_of_parameters)]
