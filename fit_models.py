@@ -32,6 +32,7 @@ class DecayingSinusoid():
     def __init__(self):
         self.number_of_parameters = 5
         self.CorrespondingFittedFunction = fitted_models.DecayingSinusoid
+        self.parameter_bounds = ([-np.inf, -np.inf, -np.inf, -1, -np.inf], [np.inf, np.inf, np.inf, 20*np.pi, np.inf])
         
     def __call__(self, t, base, amplitude, period, phase, decay_constant):
         result = base + np.exp(-t / decay_constant) * amplitude * np.sin((2*np.pi / period) * t + phase)
