@@ -49,8 +49,6 @@ class Calibration():
 
         self.calibration_factor = calibrated_positions_mean / raw_positions_mean
 
-        print('calibration factor is', self.calibration_factor)
-
     def calibrate(self, x):
         x = x * self.calibration_factor
         return x

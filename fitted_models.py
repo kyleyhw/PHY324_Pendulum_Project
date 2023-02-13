@@ -1,3 +1,5 @@
+import numpy as np
+
 import fit_models
 from fitting_and_analysis import Output
 Output = Output()
@@ -56,7 +58,7 @@ class DecayingSinusoid():
         self.number_of_parameters = self.function.number_of_parameters
         self.parameter_names = ('B', 'A', 'T', r'$\phi$', r'$\frac{1}{\tau}$')
         if units_for_parameters == None:
-            self.units_for_parameters = tuple(np.zeros())
+            self.units_for_parameters = tuple(np.zeros(self.number_of_parameters))
         else:
             self.units_for_parameters = units_for_parameters
         

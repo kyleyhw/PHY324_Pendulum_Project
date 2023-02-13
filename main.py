@@ -10,6 +10,8 @@ import numpy as np
 import data_loader
 import fit_models
 import fitting
+import fitting_and_analysis
+Output = fitting_and_analysis.Output()
 
 
 def run_main(filename, show=False, save=False):
@@ -37,11 +39,17 @@ def run_main(filename, show=False, save=False):
     if show:
         fig.show()
 
+    for i in range(len(fit.popt)):
+        print(fit.fitted_function.parameter_names[i], '=', Output.print_with_uncertainty(fit.popt[i], fit.parameter_errors[i]), end='\t \t')
+
+
+
 def single_run_main(filename):
     run_main(filename, show=True, save=True)
 
 def run_main_from_dict(filenames):
     for filename in filenames.values():
+        print()
         print(filename)
         run_main(filename, show=False, save=True)
 
