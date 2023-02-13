@@ -1,11 +1,12 @@
 import numpy as np
+
 from fitting_and_analysis import CurveFitFuncs
 cff = CurveFitFuncs()
+import calibration
 
 class DataLoader():
     def __init__(self, filename):
         directory = 'pendulum_data/%s.txt' % filename
-        # directory = filename
         file = open(directory, 'r')
         raw_data = file.read()
         raw_data = raw_data.split('\n')[2:1000]
@@ -21,12 +22,16 @@ class DataLoader():
         
         raw_times = self.full_data[0]
         raw_positions = self.full_data[1]
+
         
         self.zeroed_times = cff.remove_systematic_error(raw_times)
         self.zeroed_positions = cff.remove_systematic_error(raw_positions)
+
+        calibrate = calibration.Calibration().calibrate
+        self.calibrated_positions = calibrate(self.zeroed_positions)
         
-        self.y = self.zeroed_positions
-        self.y_error = np.zeros_like(self.zeroed_positions) + 4
+        self.y = self.calibrated_positions
+        self.y_error = np.zeros_like(self.zeroed_positions) + 0.001
         
         self.x = self.zeroed_times
         self.x_error = np.zeros_like(self.zeroed_times) + 0.0005

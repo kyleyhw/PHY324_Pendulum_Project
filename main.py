@@ -18,10 +18,10 @@ def run_main(filename, show=False, save=False):
 
     try:
         fit = fitting.Fitting(model=model, x=data.x, x_error=data.x_error, y_measured=data.y, y_error=data.y_error,
-                              units_for_parameters=('', '', '', '', ''), p0=(150, 100, 1, 1.5, 50))
+                              units_for_parameters=('', '', '', '', ''), p0=(150, 100, 1, 1, 0.02))
     except RuntimeError:
         fit = fitting.Fitting(model=model, x=data.x, x_error=data.x_error, y_measured=data.y, y_error=data.y_error,
-                              units_for_parameters=('', '', '', '', ''), p0=(150, 100, 1, -1.5, 50))
+                              units_for_parameters=('', '', '', '', ''), p0=(150, 100, 1, -1, 0.02))
 
     fig, ax = plt.subplots(1, 1, figsize=(16, 9))
 
@@ -54,7 +54,7 @@ vary_m_filenames = {m : 'vary_m_%s' % m for m in ['50g', '100g', '150g', '200g']
 all_filenames = {**vary_angle_filenames, **vary_l_filenames, **vary_m_filenames}
 
 
-# filename = vary_angle_filenames['20cm']
+# filename = all_filenames['20deg']
 # single_run_main(filename)
 
 run_main_from_dict(all_filenames)
