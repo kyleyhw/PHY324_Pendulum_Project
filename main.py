@@ -41,6 +41,8 @@ def run_main(filename, show=False, save=False):
 
     for i in range(len(fit.popt)):
         print(fit.fitted_function.parameter_names[i], '=', Output.print_with_uncertainty(fit.popt[i], fit.parameter_errors[i]), end='\t \t')
+    print()
+    print()
 
 
 
@@ -49,7 +51,6 @@ def single_run_main(filename):
 
 def run_main_from_dict(filenames):
     for filename in filenames.values():
-        print()
         print(filename)
         run_main(filename, show=False, save=True)
 
