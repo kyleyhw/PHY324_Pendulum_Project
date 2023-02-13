@@ -27,10 +27,10 @@ def run_main(filename, show=False, save=False):
 
     fit.scatter_plot_data_and_fit(ax)
 
-    ax.set_title('')
+    ax.set_title(filename)
     ax.grid(visible=True, which='both')
-    ax.set_ylabel('')
-    ax.set_xlabel('')
+    ax.set_ylabel('x-position of mass / m')
+    ax.set_xlabel('time / s')
 
     if save:
         fig.savefig('fits/' + filename + '.png')

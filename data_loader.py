@@ -9,7 +9,7 @@ class DataLoader():
         directory = 'pendulum_data/%s.txt' % filename
         file = open(directory, 'r')
         raw_data = file.read()
-        raw_data = raw_data.split('\n')[2:1000]
+        raw_data = raw_data.split('\n')[2:-1]
         raw_data = [row.split('\t') for row in raw_data]
         raw_data = [['0' if entry == '' else entry for entry in row] for row in raw_data]
         raw_data = [[float(entry) for entry in row] for row in raw_data]

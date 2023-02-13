@@ -79,10 +79,10 @@ class Output():
         #     result = float(result)
         # return result
         result = np.format_float_positional(num, precision=sf, fractional=False, trim='-')
-        if '.' in result:
-            result = float(result)
-        else:
-            result = int(result)
+        # if '.' in result:
+        #     result = float(result)
+        # else:
+        #     result = int(result)
         return result
 
     def print_with_uncertainty(self, num, uncertainty):

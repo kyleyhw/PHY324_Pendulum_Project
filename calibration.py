@@ -29,7 +29,7 @@ class Calibration():
         directory = 'pendulum_data/%s.txt' % filename
         file = open(directory, 'r')
         calibrated_data = file.read()
-        calibrated_data = calibrated_data.split('\n')[2:1000]
+        calibrated_data = calibrated_data.split('\n')[2:-1]
         calibrated_data = [row.split('\t') for row in calibrated_data]
         calibrated_data = [['0' if entry == '' else entry for entry in row] for row in calibrated_data]
         calibrated_data = [[float(entry) for entry in row] for row in calibrated_data]
